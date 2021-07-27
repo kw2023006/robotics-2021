@@ -129,35 +129,6 @@ public class session2 extends LinearOpMode {
         runtime.reset();
         resetEncoders();
 
-        /*gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,-40,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,-20,0);
-        gyroDrive(0.3,-10,0);
-        gyroStrafe(0.3,-20,0);
-
-        gyroDrive(0.3,20,0);
-        gyroStrafe(0.3,10,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,-10,0);
-
-        gyroDrive(0.3,30,0);
-        gyroStrafe(0.3,10,0);
-        gyroDrive(0.3,-20,0);
-        gyroStrafe(0.3,10,0);
-
-        gyroDrive(0.3,-20,0);
-        gyroStrafe(0.3,20,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,10,0);
-
-        gyroDrive(0.3,30,0);
-        gyroStrafe(0.3,10,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,30,0);
-        gyroDrive(0.3,30,0);
-         */
-
         //GROUND FLOOR
         drive(1);
         strafe(-4);
@@ -190,13 +161,43 @@ public class session2 extends LinearOpMode {
 
         //HOME STRETCH!
         drive(3);
+        
+        /*
+        gyroDrive(0.3,10,0);
+        gyroStrafe(0.3,-40,0);
+        gyroDrive(0.3,10,0);
+        gyroStrafe(0.3,-20,0);
+        gyroDrive(0.3,-10,0);
+        gyroStrafe(0.3,-20,0);
+
+        gyroDrive(0.3,20,0);
+        gyroStrafe(0.3,10,0);
+        gyroDrive(0.3,10,0);
+        gyroStrafe(0.3,-10,0);
+
+        gyroDrive(0.3,30,0);
+        gyroStrafe(0.3,10,0);
+        gyroDrive(0.3,-20,0);
+        gyroStrafe(0.3,10,0);
+
+        gyroDrive(0.3,-20,0);
+        gyroStrafe(0.3,20,0);
+        gyroDrive(0.3,10,0);
+        gyroStrafe(0.3,10,0);
+
+        gyroDrive(0.3,30,0);
+        gyroStrafe(0.3,10,0);
+        gyroDrive(0.3,10,0);
+        gyroStrafe(0.3,30,0);
+        gyroDrive(0.3,30,0);
+         */
 
         stopMotors();
 
     }
     public void drive(double blocks){
         gyroDrive(0.3,10 * blocks,0);
-        //assuming one block is 10cm
+        //assuming one block is 10cm (one side 100cm. 10 blocks each. therefore each block 10 cm)
     }
     public void strafe(double blocks){
         // positive is left, negative is right
