@@ -1,79 +1,3 @@
-/* Copyright (c) 2017 FIRST. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted (subject to the limitations in the disclaimer below) provided that
- * the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice, this list
- * of conditions and the following disclaimer.
- *
- * Redistributions in binary form must reproduce the above copyright notice, this
- * list of conditions and the following disclaimer in the documentation and/or
- * other materials provided with the distribution.
- *
- * Neither the name of FIRST nor the names of its contributors may be used to endorse or
- * promote products derived from this software without specific prior written permission.
- *
- * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS
- * LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-package org.firstinspires.ftc.teamcode;
-
-import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
-
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-
-
-/**
- * This Opmode is an example of a Proportional Controller
- * The drivetrain will move to a target distance using encoders and slow down when it approaches using proportional
- *
- * ---------------------------- PROPORTIONAL ------------------------------------
- * Error = Target - Current Position
- * Target is the distance that the robot will move to
- * Current position is an average of all the encoders
- * Kp is a constant that needs to be tuned
- * Gain = Error*Kp
- * velocity = speed*gain
- * velocity will store the result
- * speed is a constant chosen by the user
- * gain will decrease as the drivetrain approaches the target
- *
- * Proportional controller is a good solution for controlling a drivetrain autonomously,
- * but the robot will never reach the target, there will always be a steady state error.
- * The Steady State Error will not be too big, but it can make the code get stuck in the PDrive loop.
- * The solution for that is to exit the loop once the error is very small.
- *
- * ---------------------------- FTC DASHBOARD ------------------------------------
- * https://acmerobotics.github.io/ftc-dashboard/
- * Kp and target distance can be changed using the dashboard
- * Prints a graph of the position
- * To open the dashboard connect your laptop to the robot's wifi and then access this address using a browser:
- * http://192.168.43.1:8080/dash
- */
-
 @Autonomous(name="session2", group="Linear Opmode")
 //@Disabled
 public class session2 extends LinearOpMode {
@@ -162,46 +86,16 @@ public class session2 extends LinearOpMode {
         //HOME STRETCH!
         drive(3);
         
-        /*
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,-40,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,-20,0);
-        gyroDrive(0.3,-10,0);
-        gyroStrafe(0.3,-20,0);
-
-        gyroDrive(0.3,20,0);
-        gyroStrafe(0.3,10,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,-10,0);
-
-        gyroDrive(0.3,30,0);
-        gyroStrafe(0.3,10,0);
-        gyroDrive(0.3,-20,0);
-        gyroStrafe(0.3,10,0);
-
-        gyroDrive(0.3,-20,0);
-        gyroStrafe(0.3,20,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,10,0);
-
-        gyroDrive(0.3,30,0);
-        gyroStrafe(0.3,10,0);
-        gyroDrive(0.3,10,0);
-        gyroStrafe(0.3,30,0);
-        gyroDrive(0.3,30,0);
-         */
-
         stopMotors();
 
     }
     public void drive(double blocks){
-        gyroDrive(0.3,10 * blocks,0);
-        //assuming one block is 10cm (one side 100cm. 10 blocks each. therefore each block 10 cm)
+        gyroDrive(0.3,50 * blocks,0);
+        //assuming one block is 50cm (one full side 500 cm, 10 blocks one side, therefore one block = 50cm)
     }
     public void strafe(double blocks){
         // positive is left, negative is right
-        gyroStrafe(0.3,10 * blocks,0);
+        gyroStrafe(0.3,50 * blocks,0);
     }
 
     public void gyroStrafe(double speed, double distance, double angle) {
